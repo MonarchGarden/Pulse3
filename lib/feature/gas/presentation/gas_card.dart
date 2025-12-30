@@ -1,5 +1,6 @@
 import 'package:Pulse3/feature/gas/domain/gas_info.dart';
 import 'package:Pulse3/feature/gas/presentation/gas_level_badge.dart';
+import 'package:Pulse3/feature/gas/presentation/last_updated_text.dart';
 import 'package:flutter/material.dart';
 import 'gas_animated_value.dart';
 
@@ -56,6 +57,7 @@ class GasCard extends StatelessWidget {
             const SizedBox(height: 20),
             GasLevelBadge(level: gas.level),
             const SizedBox(height: 20),
+            const LastUpdatedText(),
             const Text(
               'Read-only • No wallet • No signing',
               style: TextStyle(

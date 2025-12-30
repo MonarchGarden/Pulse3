@@ -8,6 +8,7 @@ import 'data/gas_remote_data_source.dart';
 final gasRemoteDataSourceProvider = Provider((ref) => GasRemoteDataSource());
 
 final _previousGasProvider = StateProvider<double?>((_) => null);
+final lastUpdatedAtProvider = StateProvider<DateTime?>((ref) => null);
 
 final gasStreamProvider = StreamProvider<GasInfo>((ref) {
   final remote = ref.read(gasRemoteDataSourceProvider);
@@ -30,6 +31,7 @@ final gasStreamProvider = StreamProvider<GasInfo>((ref) {
       }
 
       ref.read(_previousGasProvider.notifier).state = gas.gwei;
+      ref.read(lastUpdatedAtProvider.notifier).state = DateTime.now();
 
       return GasInfo(
         gwei: gas.gwei,
