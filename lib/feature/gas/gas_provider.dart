@@ -1,0 +1,41 @@
+import 'dart:async';
+import 'package:Pulse3/feature/gas/presentation/gas_providers.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'domain/gas_info.dart';
+import 'domain/gas_trend.dart';
+import 'data/gas_remote_data_source.dart';
+
+final gasRemoteDataSourceProvider = Provider((ref) => GasRemoteDataSource());
+
+final _previousGasProvider = StateProvider<double?>((_) => null);
+
+final gasStreamProvider = StreamProvider<GasInfo>((ref) {
+  final remote = ref.read(gasRemoteDataSourceProvider);
+  final chain = ref.watch(selectedChainProvider);
+
+  return Stream.periodic(
+    const Duration(seconds: 15),
+    (_) async {
+      final gas = await remote.fetchGas(chain);
+
+      final prev = ref.read(_previousGasProvider);
+      GasTrend trend = GasTrend.flat;
+
+      if (prev != null) {
+        if (gas.gwei > prev) {
+          trend = GasTrend.up;
+        } else if (gas.gwei < prev) {
+          trend = GasTrend.down;
+        }
+      }
+
+      ref.read(_previousGasProvider.notifier).state = gas.gwei;
+
+      return GasInfo(
+        gwei: gas.gwei,
+        level: gas.level,
+        trend: trend,
+      );
+    },
+  ).asyncMap((e) => e);
+});
