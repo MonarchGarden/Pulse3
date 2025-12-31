@@ -25,7 +25,7 @@ class GasRemoteDataSource {
     final gasWei = int.parse(hexGas.substring(2), radix: 16);
     final gwei = gasWei / 1e9;
 
-    final GasLevel level = gwei < 20
+    final level = gwei < 20
         ? GasLevel.cheap
         : gwei < 40
             ? GasLevel.normal

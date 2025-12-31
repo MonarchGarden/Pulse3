@@ -1,8 +1,8 @@
+import 'package:Pulse3/feature/gas/gas_provider.dart';
+import 'package:Pulse3/feature/gas/presentation/gas_card.dart';
+import 'package:Pulse3/feature/gas/presentation/gas_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'gas_providers.dart';
-import 'gas_card.dart';
-import 'gas_skeleton.dart';
 
 class GasScreen extends ConsumerWidget {
   const GasScreen({super.key});
