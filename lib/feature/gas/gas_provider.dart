@@ -1,9 +1,9 @@
 import 'dart:async';
+import 'package:Pulse3/feature/gas/data/gas_remote_data_source.dart';
+import 'package:Pulse3/feature/gas/domain/gas_info.dart';
+import 'package:Pulse3/feature/gas/domain/gas_trend.dart';
 import 'package:Pulse3/feature/gas/presentation/gas_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'domain/gas_info.dart';
-import 'domain/gas_trend.dart';
-import 'data/gas_remote_data_source.dart';
 
 final gasRemoteDataSourceProvider = Provider((ref) => GasRemoteDataSource());
 
