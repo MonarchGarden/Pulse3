@@ -1,15 +1,65 @@
+import 'package:Pulse3/feature/alerts/alerts_engine.dart';
+import 'package:Pulse3/feature/alerts/domain/gas_alert.dart';
+import 'package:Pulse3/feature/alerts/presentation/add_gas_alert_sheet.dart';
+import 'package:Pulse3/feature/alerts/triggered_alert_provider.dart';
 import 'package:Pulse3/feature/gas/gas_provider.dart';
 import 'package:Pulse3/feature/gas/presentation/gas_card.dart';
 import 'package:Pulse3/feature/gas/presentation/gas_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class GasScreen extends ConsumerWidget {
+class GasScreen extends ConsumerStatefulWidget {
   const GasScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<GasScreen> createState() => _GasScreenState();
+}
+
+class _GasScreenState extends ConsumerState<GasScreen> {
+  late final ProviderSubscription<GasAlert?> _alertSub;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _alertSub = ref.listenManual<GasAlert?>(
+      triggeredAlertProvider,
+      (prev, next) {
+        if (next == null) return;
+
+        showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+            title: const Text('Gas Alert Triggered'),
+            content: Text(
+              'Gas is now ${next.condition == AlertCondition.below ? 'below' : 'above'} '
+              '${next.threshold} GWEI on ${next.chain.name}',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  ref.read(triggeredAlertProvider.notifier).state = null;
+                  Navigator.pop(context);
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _alertSub.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final gasAsync = ref.watch(gasStreamProvider);
+    ref.watch(gasAlertEngineProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -17,8 +67,14 @@ class GasScreen extends ConsumerWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: () => ref.invalidate(gasStreamProvider),
+            icon: const Icon(Icons.add_alert),
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                builder: (_) => const AddGasAlertSheet(),
+              );
+            },
           ),
         ],
       ),
