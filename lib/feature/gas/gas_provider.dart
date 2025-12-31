@@ -14,30 +14,27 @@ final gasStreamProvider = StreamProvider<GasInfo>((ref) {
   final remote = ref.read(gasRemoteDataSourceProvider);
   final chain = ref.watch(selectedChainProvider);
 
-  return Stream.periodic(
-    const Duration(seconds: 15),
-    (_) async {
-      final gas = await remote.fetchGas(chain);
+  return Stream.periodic(const Duration(seconds: 15)).asyncMap((_) async {
+    final gas = await remote.fetchGas(chain);
+    final prev = ref.read(_previousGasProvider);
 
-      final prev = ref.read(_previousGasProvider);
-      GasTrend trend = GasTrend.flat;
+    GasTrend trend = GasTrend.flat;
 
-      if (prev != null) {
-        if (gas.gwei > prev) {
-          trend = GasTrend.up;
-        } else if (gas.gwei < prev) {
-          trend = GasTrend.down;
-        }
+    if (prev != null) {
+      if (gas.gwei > prev) {
+        trend = GasTrend.up;
+      } else if (gas.gwei < prev) {
+        trend = GasTrend.down;
       }
+    }
 
-      ref.read(_previousGasProvider.notifier).state = gas.gwei;
-      ref.read(lastUpdatedAtProvider.notifier).state = DateTime.now();
+    ref.read(_previousGasProvider.notifier).state = gas.gwei;
+    ref.read(lastUpdatedAtProvider.notifier).state = DateTime.now();
 
-      return GasInfo(
-        gwei: gas.gwei,
-        level: gas.level,
-        trend: trend,
-      );
-    },
-  ).asyncMap((e) => e);
+    return GasInfo(
+      gwei: gas.gwei,
+      level: gas.level,
+      trend: trend,
+    );
+  });
 });
