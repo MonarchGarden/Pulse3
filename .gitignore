@@ -27,6 +27,8 @@ ios/Flutter/Flutter.framework
 ios/Flutter/engine/
 ios/Flutter/flutter_export_environment.sh
 ios/Podfile.lock
+ios/Podfile
+macos/Podfile
 
 # macOS
 macos/Pods/
@@ -57,3 +59,10 @@ windows/flutter/generated_plugins.mk
 # OS
 .DS_Store
 Thumbs.db
+
+# Ignore CocoaPods Podfiles (user choice)
+
+
+
+# Ignore Flutter lockfile (user choice)
+pubspec.lock
