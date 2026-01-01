@@ -33,7 +33,6 @@ build/
 **/doc/api/
 **/ios/Flutter/.last_build_id
 
-
 # Android
 android/.gradle/
 android/local.properties
@@ -58,9 +57,18 @@ ios/Runner.xcworkspace/
 macos/Flutter/ephemeral/
 macos/Flutter/GeneratedPluginRegistrant.swift
 macos/Runner.xcworkspace/
+macos/Flutter/Flutter-Debug.xcconfig
+macos/Flutter/Flutter-Release.xcconfig
+macos/Flutter/Flutter-Profile.xcconfig
+macos/Flutter/GeneratedPluginRegistrant.swift
 
 
 # Symbolication / Obfuscation
 
 app.*.symbols
 app.*.map.json
+
+windows/flutter/generated_plugin_registrant.cc
+windows/flutter/generated_plugins.cmake
+
+
