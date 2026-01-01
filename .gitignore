@@ -1,45 +1,18 @@
-
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
-migrate_working_dir/
-*.icloud
-
-
-# IntelliJ / Android Studio
-*.iml
-*.ipr
-*.iws
-.idea/
-
-
-# VS Code
-.vscode/
-
-
-# Flutter / Dart / Pub
+# Flutter
 .dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
+.packages
 .pub/
 build/
-**/doc/api/
-**/ios/Flutter/.last_build_id
+.flutter-plugins
+.flutter-plugins-dependencies
 
-# Android
-android/.gradle/
-android/local.properties
-android/key.properties
-/android/app/debug
-/android/app/profile
-/android/app/release
+
+# Firebase / FlutterFire
+firebase-debug.log
+firebase-debug.*.log
+
+# Keep this (DO NOT IGNORE)
+!lib/firebase_options.dart
 
 
 # iOS
@@ -47,28 +20,38 @@ ios/Pods/
 ios/.symlinks/
 ios/Flutter/ephemeral/
 ios/Flutter/Generated.xcconfig
-ios/Flutter/Flutter.podspec
+ios/Flutter/*.xcconfig
 ios/Flutter/App.framework
 ios/Flutter/Flutter.framework
-ios/Runner.xcworkspace/
-
+ios/Flutter/engine/
+ios/Flutter/flutter_export_environment.sh
+ios/Podfile.lock
 
 # macOS
+macos/Pods/
+macos/.symlinks/
 macos/Flutter/ephemeral/
-macos/Flutter/GeneratedPluginRegistrant.swift
-macos/Runner.xcworkspace/
-macos/Flutter/Flutter-Debug.xcconfig
-macos/Flutter/Flutter-Release.xcconfig
-macos/Flutter/Flutter-Profile.xcconfig
-macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Flutter/*.xcconfig
+macos/Podfile.lock
 
 
-# Symbolication / Obfuscation
+# Android
+android/.gradle/
+android/local.properties
+android/app/build/
 
-app.*.symbols
-app.*.map.json
-
+# Windows
 windows/flutter/generated_plugin_registrant.cc
 windows/flutter/generated_plugins.cmake
+windows/flutter/generated_plugins.mk
 
 
+# IDE
+.vscode/
+.idea/
+*.iml
+
+
+# OS
+.DS_Store
+Thumbs.db
