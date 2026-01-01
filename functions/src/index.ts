@@ -13,6 +13,8 @@ import { onSchedule } from "firebase-functions/v2/scheduler";
 import * as admin from "firebase-admin";
 import axios from "axios";
 
+admin.initializeApp();
+
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 
@@ -48,7 +50,6 @@ export const checkEthereumGasAlerts = onSchedule(
 
       logger.info(`⛽ Ethereum gas: ${gasPriceGwei} Gwei`);
 
-      // 2️⃣ Read alerts from Firestore (no auth, MVP)
       const snapshot = await admin
         .firestore()
         .collection("gasAlerts")
@@ -60,7 +61,6 @@ export const checkEthereumGasAlerts = onSchedule(
         return;
       }
 
-      // 3️⃣ Evaluate alerts`
       const notifications: Promise<string>[] = [];
 
       snapshot.forEach((doc: any) => {
@@ -100,5 +100,3 @@ export const checkEthereumGasAlerts = onSchedule(
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });`
-
-admin.initializeApp();
