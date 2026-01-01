@@ -1,3 +1,4 @@
+import 'package:Pulse3/core/firebase/firebase_auth_provider.dart';
 import 'package:Pulse3/feature/alerts/alerts_engine.dart';
 import 'package:Pulse3/feature/alerts/domain/gas_alert.dart';
 import 'package:Pulse3/feature/alerts/presentation/add_gas_alert_sheet.dart';
@@ -5,6 +6,7 @@ import 'package:Pulse3/feature/alerts/triggered_alert_provider.dart';
 import 'package:Pulse3/feature/gas/gas_provider.dart';
 import 'package:Pulse3/feature/gas/presentation/gas_card.dart';
 import 'package:Pulse3/feature/gas/presentation/gas_skeleton.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -60,6 +62,14 @@ class _GasScreenState extends ConsumerState<GasScreen> {
   Widget build(BuildContext context) {
     final gasAsync = ref.watch(gasStreamProvider);
     ref.watch(gasAlertEngineProvider);
+
+    ref.listen(authStateProvider, (_, next) {
+      next.whenData((user) {
+        if (user == null) {
+          FirebaseAuth.instance.signInAnonymously();
+        }
+      });
+    });
 
     return Scaffold(
       appBar: AppBar(
