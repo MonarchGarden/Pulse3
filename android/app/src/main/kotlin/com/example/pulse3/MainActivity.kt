@@ -1,4 +1,4 @@
-package com.example.pulse3
+package id.bobby.pulse3
 
 import io.flutter.embedding.android.FlutterActivity
 
