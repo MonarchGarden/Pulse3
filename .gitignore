@@ -62,3 +62,10 @@ Thumbs.db
 
 # Ignore Flutter lockfile (user choice)
 pubspec.lock
+
+functions/lib/
+functions/node_modules/
+
+.firebase/
+functions/node_modules/
+functions/lib/

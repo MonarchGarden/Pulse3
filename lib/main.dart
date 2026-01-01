@@ -7,10 +7,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseMessaging.instance.requestPermission();
+
+  final messaging = FirebaseMessaging.instance;
+
+  await messaging.requestPermission();
+  await messaging.subscribeToTopic("gas-alerts");
 
   runApp(const ProviderScope(child: Pulse3App()));
 }

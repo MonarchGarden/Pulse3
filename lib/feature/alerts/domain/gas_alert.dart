@@ -9,7 +9,7 @@ class GasAlert {
   final double threshold;
   final bool triggered;
 
-  const GasAlert({
+  GasAlert({
     required this.id,
     required this.chain,
     required this.condition,
@@ -17,7 +17,9 @@ class GasAlert {
     this.triggered = false,
   });
 
-  GasAlert copyWith({bool? triggered}) {
+  GasAlert copyWith({
+    bool? triggered,
+  }) {
     return GasAlert(
       id: id,
       chain: chain,
