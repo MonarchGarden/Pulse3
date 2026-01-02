@@ -28,7 +28,9 @@ ios/Flutter/engine/
 ios/Flutter/flutter_export_environment.sh
 ios/Podfile.lock
 ios/Podfile
-macos/Podfile
+ios/DerivedData/
+ios/Runner.xcworkspace
+ios/Runner/Assets.xcassets
 
 # macOS
 macos/Pods/
@@ -37,12 +39,14 @@ macos/.symlinks/
 macos/Flutter/ephemeral/
 macos/Flutter/*.xcconfig
 macos/Podfile.lock
+macos/Podfile
 
 
 # Android
 android/.gradle/
 android/local.properties
 android/app/build/
+android/app/src/main/res
 
 # Windows
 windows/flutter/generated_plugin_registrant.cc
