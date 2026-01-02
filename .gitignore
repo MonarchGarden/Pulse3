@@ -30,7 +30,6 @@ ios/Podfile.lock
 ios/Podfile
 ios/DerivedData/
 ios/Runner.xcworkspace
-ios/Runner/Assets.xcassets
 
 # macOS
 macos/Pods/
@@ -46,7 +45,6 @@ macos/Podfile
 android/.gradle/
 android/local.properties
 android/app/build/
-android/app/src/main/res
 
 # Windows
 windows/flutter/generated_plugin_registrant.cc
