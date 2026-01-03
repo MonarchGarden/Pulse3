@@ -103,6 +103,7 @@ class _GasScreenState extends ConsumerState<GasScreen> {
                   final selected = chain == activeChain;
 
                   return ChoiceChip(
+                    showCheckmark: false,
                     label: Text(chain.label),
                     selected: selected,
                     onSelected: (_) => _selectChain(chain),
