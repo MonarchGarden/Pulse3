@@ -8,6 +8,13 @@ import 'package:dio/dio.dart';
 class GasRemoteDataSource {
   final Dio _dio = DioClient.create();
 
+  BigInt _hexToBigInt(String hex) {
+    final cleaned = hex.startsWith('0x') ? hex.substring(2) : hex;
+    return BigInt.parse(cleaned, radix: 16);
+  }
+
+  double _weiToGwei(BigInt wei) => wei.toDouble() / 1e9;
+
   Future<GasInfo> fetchGas(Chain chain) async {
     final rpcUrl = RpcConfig.rpcUrls[chain]!;
 
@@ -22,8 +29,9 @@ class GasRemoteDataSource {
     );
 
     final hexGas = response.data['result'] as String;
-    final gasWei = int.parse(hexGas.substring(2), radix: 16);
-    final gwei = gasWei / 1e9;
+
+    final wei = _hexToBigInt(hexGas);
+    final gwei = _weiToGwei(wei);
 
     final level = gwei < 20
         ? GasLevel.cheap

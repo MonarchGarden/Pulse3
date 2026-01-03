@@ -1,4 +1,4 @@
-import 'package:Pulse3/feature/gas/presentation/gas_screen.dart';
+import 'package:Pulse3/feature/onboarding/splash_video_screen.dart';
 import 'package:flutter/material.dart';
 
 class Pulse3App extends StatelessWidget {
@@ -10,7 +10,7 @@ class Pulse3App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Pulse3',
       theme: ThemeData.dark(),
-      home: const GasScreen(),
+      home: const SplashVideoScreen(),
     );
   }
 }

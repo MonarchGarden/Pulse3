@@ -14,7 +14,7 @@ void main() async {
 
   final messaging = FirebaseMessaging.instance;
 
-  await messaging.requestPermission();
+  // await messaging.requestPermission();
   await messaging.subscribeToTopic("gas-alerts");
 
   runApp(const ProviderScope(child: Pulse3App()));
