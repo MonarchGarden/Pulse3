@@ -5,5 +5,7 @@ class RpcConfig {
     Chain.ethereum: 'https://ethereum.publicnode.com',
     Chain.arbitrum: 'https://arbitrum.publicnode.com',
     Chain.base: 'https://base.publicnode.com',
+    Chain.polygon: 'https://polygon.publicnode.com',
+    Chain.optimism: 'https://optimism.publicnode.com',
   };
 }

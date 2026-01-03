@@ -2,6 +2,8 @@ enum Chain {
   ethereum,
   arbitrum,
   base,
+  polygon,
+  optimism,
 }
 
 extension ChainX on Chain {
@@ -13,6 +15,10 @@ extension ChainX on Chain {
         return 'Arbitrum';
       case Chain.base:
         return 'Base';
+      case Chain.polygon:
+        return 'Polygon';
+      case Chain.optimism:
+        return 'Optimism';
     }
   }
 }
