@@ -1,4 +1,4 @@
-import 'package:Pulse3/feature/gas/domain/chain.dart';
+import 'package:Pulse3/features/gas/domain/chain.dart';
 
 class RpcConfig {
   static const Map<Chain, String> rpcUrls = {

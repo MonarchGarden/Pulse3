@@ -1,4 +1,4 @@
-import 'package:Pulse3/feature/alerts/firestore_provider.dart';
+import 'package:Pulse3/features/alerts/firestore_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'domain/gas_alert.dart';

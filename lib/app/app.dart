@@ -1,4 +1,4 @@
-import 'package:Pulse3/feature/onboarding/splash_video_screen.dart';
+import 'package:Pulse3/features/onboarding/splash_video_screen.dart';
 import 'package:flutter/material.dart';
 
 class Pulse3App extends StatelessWidget {

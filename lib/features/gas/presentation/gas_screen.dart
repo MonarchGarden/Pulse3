@@ -1,11 +1,11 @@
-import 'package:Pulse3/feature/alerts/alerts_engine.dart';
-import 'package:Pulse3/feature/alerts/domain/gas_alert.dart';
-import 'package:Pulse3/feature/alerts/triggered_alert_provider.dart';
-import 'package:Pulse3/feature/gas/domain/chain.dart';
-import 'package:Pulse3/feature/gas/gas_provider.dart';
-import 'package:Pulse3/feature/gas/presentation/gas_card.dart';
-import 'package:Pulse3/feature/gas/presentation/gas_skeleton.dart';
-import 'package:Pulse3/feature/gas/presentation/providers/chain_provider.dart';
+import 'package:Pulse3/features/alerts/alerts_engine.dart';
+import 'package:Pulse3/features/alerts/domain/gas_alert.dart';
+import 'package:Pulse3/features/alerts/triggered_alert_provider.dart';
+import 'package:Pulse3/features/gas/domain/chain.dart';
+import 'package:Pulse3/features/gas/gas_provider.dart';
+import 'package:Pulse3/features/gas/presentation/gas_card.dart';
+import 'package:Pulse3/features/gas/presentation/gas_skeleton.dart';
+import 'package:Pulse3/features/gas/presentation/providers/chain_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

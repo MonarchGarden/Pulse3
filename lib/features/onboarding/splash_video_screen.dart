@@ -4,7 +4,7 @@ import 'package:video_player/video_player.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-import 'package:Pulse3/feature/gas/presentation/gas_screen.dart';
+import 'package:Pulse3/features/gas/presentation/gas_screen.dart';
 
 class SplashVideoScreen extends StatefulWidget {
   const SplashVideoScreen({super.key});

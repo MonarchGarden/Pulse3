@@ -1,6 +1,6 @@
-import 'package:Pulse3/feature/alerts/alerts_providers.dart';
-import 'package:Pulse3/feature/alerts/domain/gas_alert.dart';
-import 'package:Pulse3/feature/gas/presentation/gas_providers.dart';
+import 'package:Pulse3/features/alerts/alerts_providers.dart';
+import 'package:Pulse3/features/alerts/domain/gas_alert.dart';
+import 'package:Pulse3/features/gas/presentation/gas_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,9 +1,9 @@
-import 'package:Pulse3/feature/gas/domain/gas_info.dart';
-import 'package:Pulse3/feature/gas/presentation/gas_animated_value.dart';
-import 'package:Pulse3/feature/gas/presentation/gas_level_badge.dart';
-import 'package:Pulse3/feature/gas/presentation/last_updated_text.dart';
+import 'package:Pulse3/features/gas/domain/gas_info.dart';
+import 'package:Pulse3/features/gas/presentation/gas_animated_value.dart';
+import 'package:Pulse3/features/gas/presentation/gas_level_badge.dart';
+import 'package:Pulse3/features/gas/presentation/last_updated_text.dart';
 import 'package:flutter/material.dart';
-import 'package:Pulse3/feature/gas/domain/chain.dart';
+import 'package:Pulse3/features/gas/domain/chain.dart';
 
 class GasCard extends StatelessWidget {
   final GasInfo gas;

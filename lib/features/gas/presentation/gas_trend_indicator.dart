@@ -1,4 +1,4 @@
-import 'package:Pulse3/feature/gas/domain/gas_trend.dart';
+import 'package:Pulse3/features/gas/domain/gas_trend.dart';
 import 'package:flutter/material.dart';
 
 class GasTrendIndicator extends StatelessWidget {

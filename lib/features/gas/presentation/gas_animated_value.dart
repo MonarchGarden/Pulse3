@@ -1,5 +1,5 @@
-import 'package:Pulse3/feature/gas/domain/gas_info.dart';
-import 'package:Pulse3/feature/gas/presentation/gas_trend_indicator.dart';
+import 'package:Pulse3/features/gas/domain/gas_info.dart';
+import 'package:Pulse3/features/gas/presentation/gas_trend_indicator.dart';
 import 'package:flutter/material.dart';
 
 class GasAnimatedValue extends StatelessWidget {

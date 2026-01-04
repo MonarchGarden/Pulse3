@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:Pulse3/feature/gas/domain/chain.dart';
+import 'package:Pulse3/features/gas/domain/chain.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/gas_remote_data_source.dart';
 import '../domain/gas_info.dart';
