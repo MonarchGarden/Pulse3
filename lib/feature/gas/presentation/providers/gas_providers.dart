@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:Pulse3/core/constant/enum/chain.dart';
+import 'package:Pulse3/feature/gas/data/gas_remote_data_source.dart';
+import 'package:Pulse3/feature/gas/domain/gas_info.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../data/gas_remote_data_source.dart';
-import '../domain/gas_info.dart';
 
 final gasRemoteDataSourceProvider = Provider((ref) => GasRemoteDataSource());
 final selectedChainProvider = StateProvider<Chain>((ref) => Chain.ethereum);

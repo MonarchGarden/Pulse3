@@ -1,4 +1,4 @@
-import 'package:Pulse3/feature/Pulse3App.dart';
+import 'package:Pulse3/feature/pulse3_app.dart';
 import 'package:Pulse3/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
