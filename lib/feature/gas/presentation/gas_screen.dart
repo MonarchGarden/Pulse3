@@ -1,4 +1,5 @@
 import 'package:Pulse3/core/constant/enum/alert_condition.dart';
+import 'package:Pulse3/core/constant/enum/chain.dart';
 import 'package:Pulse3/feature/alerts/alerts_engine.dart';
 import 'package:Pulse3/feature/alerts/domain/gas_alert.dart';
 import 'package:Pulse3/feature/alerts/triggered_alert_provider.dart';
