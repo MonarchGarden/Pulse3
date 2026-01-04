@@ -1,0 +1,4 @@
+enum AppRouteName {
+  splash,
+  gas,
+}

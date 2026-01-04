@@ -1,4 +1,4 @@
-import 'package:Pulse3/feature/gas/domain/gas_info.dart';
+import 'package:Pulse3/core/constant/enum/gas_level.dart';
 import 'package:flutter/material.dart';
 
 class GasLevelBadge extends StatelessWidget {

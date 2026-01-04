@@ -1,8 +1,7 @@
-import 'dart:io';
+import 'package:Pulse3/core/constant/asset/assets.dart';
+import 'package:Pulse3/core/utils/pulse3_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:Pulse3/feature/gas/presentation/gas_screen.dart';
 
@@ -21,7 +20,7 @@ class _SplashVideoScreenState extends State<SplashVideoScreen> {
   void initState() {
     super.initState();
 
-    _controller = VideoPlayerController.asset('assets/splash/intro.mp4')
+    _controller = VideoPlayerController.asset(AppAssets.splashIntroVideo)
       ..initialize().then((_) {
         if (!mounted) return;
         setState(() {});
@@ -37,23 +36,11 @@ class _SplashVideoScreenState extends State<SplashVideoScreen> {
 
     if (v.position >= v.duration && !_navigated) {
       _navigated = true;
-      await _requestNotificationPermission();
+      await Pulse3Helper.requestNotificationPermission();
       if (!mounted) return;
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => const GasScreen()),
-      );
-    }
-  }
-
-  Future<void> _requestNotificationPermission() async {
-    if (Platform.isIOS || Platform.isAndroid) {
-      await Permission.notification.request();
-
-      await FirebaseMessaging.instance.requestPermission(
-        alert: true,
-        badge: true,
-        sound: true,
       );
     }
   }

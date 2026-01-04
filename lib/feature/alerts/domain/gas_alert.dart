@@ -1,6 +1,5 @@
+import 'package:Pulse3/core/constant/enum/alert_condition.dart';
 import 'package:Pulse3/feature/gas/domain/chain.dart';
-
-enum AlertCondition { above, below }
 
 class GasAlert {
   final String id;

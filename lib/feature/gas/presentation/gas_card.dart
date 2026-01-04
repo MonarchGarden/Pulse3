@@ -1,3 +1,4 @@
+import 'package:Pulse3/core/constant/enum/gas_level.dart';
 import 'package:Pulse3/feature/gas/domain/gas_info.dart';
 import 'package:Pulse3/feature/gas/presentation/gas_animated_value.dart';
 import 'package:Pulse3/feature/gas/presentation/gas_level_badge.dart';
