@@ -1,6 +1,7 @@
 import 'package:Pulse3/core/config/rpc_config.dart';
+import 'package:Pulse3/core/constant/enum/chain.dart';
+import 'package:Pulse3/core/constant/enum/gas_level.dart';
 import 'package:Pulse3/core/network/dio_client.dart';
-import 'package:Pulse3/feature/gas/domain/chain.dart';
 import 'package:Pulse3/feature/gas/domain/gas_info.dart';
 import 'package:Pulse3/feature/gas/domain/gas_trend.dart';
 import 'package:dio/dio.dart';

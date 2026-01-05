@@ -1,8 +1,8 @@
-import 'package:Pulse3/feature/gas/domain/chain.dart';
+import 'package:Pulse3/core/constant/enum/chain.dart';
 import 'package:Pulse3/feature/gas/gas_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'last_updated_provider.dart';
+import 'providers/last_updated_provider.dart';
 
 class LastUpdatedText extends ConsumerWidget {
   final Chain chain;

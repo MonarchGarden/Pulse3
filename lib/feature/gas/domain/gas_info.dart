@@ -1,6 +1,6 @@
-import 'gas_trend.dart';
+import 'package:Pulse3/core/constant/enum/gas_level.dart';
 
-enum GasLevel { cheap, normal, expensive }
+import 'gas_trend.dart';
 
 class GasInfo {
   final double gwei;

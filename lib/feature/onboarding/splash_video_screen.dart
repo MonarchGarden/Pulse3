@@ -1,10 +1,11 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'dart:async';
 
-import 'package:Pulse3/feature/gas/presentation/gas_screen.dart';
+import 'package:Pulse3/app/router/app_router.dart';
+import 'package:Pulse3/core/constant/asset/assets.dart';
+import 'package:Pulse3/core/utils/pulse3_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:video_player/video_player.dart';
 
 class SplashVideoScreen extends StatefulWidget {
   const SplashVideoScreen({super.key});
@@ -21,7 +22,7 @@ class _SplashVideoScreenState extends State<SplashVideoScreen> {
   void initState() {
     super.initState();
 
-    _controller = VideoPlayerController.asset('assets/splash/intro.mp4')
+    _controller = VideoPlayerController.asset(AppAssets.splashIntroVideo)
       ..initialize().then((_) {
         if (!mounted) return;
         setState(() {});
@@ -31,31 +32,21 @@ class _SplashVideoScreenState extends State<SplashVideoScreen> {
     _controller.addListener(_onVideoUpdate);
   }
 
-  void _onVideoUpdate() async {
+  void _onVideoUpdate() {
     final v = _controller.value;
-    if (!v.isInitialized) return;
+    if (!v.isInitialized || _navigated) return;
 
-    if (v.position >= v.duration && !_navigated) {
-      _navigated = true;
-      await _requestNotificationPermission();
-      if (!mounted) return;
+    final isFinished = v.duration != Duration.zero &&
+        v.position >= (v.duration - const Duration(milliseconds: 200));
 
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const GasScreen()),
-      );
-    }
-  }
+    if (!isFinished) return;
 
-  Future<void> _requestNotificationPermission() async {
-    if (Platform.isIOS || Platform.isAndroid) {
-      await Permission.notification.request();
+    _navigated = true;
 
-      await FirebaseMessaging.instance.requestPermission(
-        alert: true,
-        badge: true,
-        sound: true,
-      );
-    }
+    if (!mounted) return;
+    context.go(AppRoutePath.gas);
+
+    unawaited(Pulse3Helper.requestNotificationPermission());
   }
 
   @override

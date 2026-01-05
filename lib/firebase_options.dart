@@ -59,4 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'pulse-3-81e22',
     storageBucket: 'pulse-3-81e22.firebasestorage.app',
   );
+
 }

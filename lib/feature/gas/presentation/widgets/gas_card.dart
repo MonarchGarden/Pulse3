@@ -1,9 +1,9 @@
+import 'package:Pulse3/core/constant/enum/chain.dart';
 import 'package:Pulse3/feature/gas/domain/gas_info.dart';
-import 'package:Pulse3/feature/gas/presentation/gas_animated_value.dart';
-import 'package:Pulse3/feature/gas/presentation/gas_level_badge.dart';
+import 'package:Pulse3/feature/gas/presentation/widgets/gas_animated_value.dart';
+import 'package:Pulse3/feature/gas/presentation/widgets/gas_level_badge.dart';
 import 'package:Pulse3/feature/gas/presentation/last_updated_text.dart';
 import 'package:flutter/material.dart';
-import 'package:Pulse3/feature/gas/domain/chain.dart';
 
 class GasCard extends StatelessWidget {
   final GasInfo gas;
@@ -14,28 +14,6 @@ class GasCard extends StatelessWidget {
     required this.gas,
     required this.chain,
   });
-
-  Color _levelColor(GasLevel level) {
-    switch (level) {
-      case GasLevel.cheap:
-        return Colors.greenAccent;
-      case GasLevel.normal:
-        return Colors.orangeAccent;
-      case GasLevel.expensive:
-        return Colors.redAccent;
-    }
-  }
-
-  String _levelLabel(GasLevel level) {
-    switch (level) {
-      case GasLevel.cheap:
-        return 'CHEAP';
-      case GasLevel.normal:
-        return 'NORMAL';
-      case GasLevel.expensive:
-        return 'EXPENSIVE';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

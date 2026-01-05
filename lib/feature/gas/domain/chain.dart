@@ -1,10 +1,4 @@
-enum Chain {
-  ethereum,
-  arbitrum,
-  base,
-  polygon,
-  optimism,
-}
+import 'package:Pulse3/core/constant/enum/chain.dart';
 
 extension ChainX on Chain {
   String get label {

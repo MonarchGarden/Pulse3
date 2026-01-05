@@ -1,7 +1,7 @@
+import 'package:Pulse3/core/constant/enum/alert_condition.dart';
 import 'package:Pulse3/feature/alerts/alerts_providers.dart';
-import 'package:Pulse3/feature/alerts/domain/gas_alert.dart';
 import 'package:Pulse3/feature/alerts/triggered_alert_provider.dart';
-import 'package:Pulse3/feature/gas/presentation/gas_providers.dart';
+import 'package:Pulse3/feature/gas/presentation/providers/gas_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final gasAlertEngineProvider = Provider<void>((ref) {
