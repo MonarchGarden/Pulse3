@@ -1,9 +1,11 @@
+import 'dart:async';
+
+import 'package:Pulse3/app/router/app_router.dart';
 import 'package:Pulse3/core/constant/asset/assets.dart';
 import 'package:Pulse3/core/utils/pulse3_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:video_player/video_player.dart';
-
-import 'package:Pulse3/feature/gas/presentation/gas_screen.dart';
 
 class SplashVideoScreen extends StatefulWidget {
   const SplashVideoScreen({super.key});
@@ -30,19 +32,21 @@ class _SplashVideoScreenState extends State<SplashVideoScreen> {
     _controller.addListener(_onVideoUpdate);
   }
 
-  void _onVideoUpdate() async {
+  void _onVideoUpdate() {
     final v = _controller.value;
-    if (!v.isInitialized) return;
+    if (!v.isInitialized || _navigated) return;
 
-    if (v.position >= v.duration && !_navigated) {
-      _navigated = true;
-      await Pulse3Helper.requestNotificationPermission();
-      if (!mounted) return;
+    final isFinished = v.duration != Duration.zero &&
+        v.position >= (v.duration - const Duration(milliseconds: 200));
 
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const GasScreen()),
-      );
-    }
+    if (!isFinished) return;
+
+    _navigated = true;
+
+    if (!mounted) return;
+    context.go(AppRoutePath.gas);
+
+    unawaited(Pulse3Helper.requestNotificationPermission());
   }
 
   @override
