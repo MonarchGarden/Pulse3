@@ -5,6 +5,7 @@ plugins {
 }
 
 apply plugin: "com.google.gms.google-services"
+    id 'com.google.firebase.crashlytics'
 
 
 def localProperties = new Properties()

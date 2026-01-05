@@ -1,36 +1,41 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:Pulse3/feature/pulse3_app.dart';
-import 'package:flutter/foundation.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../firebase_options.dart';
 
 Future<void> bootstrap() async {
   await runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    FlutterError.onError = (details) {
-      FlutterError.presentError(details);
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
 
-      if (kDebugMode) {
-        debugPrint('FlutterError: ${details.exceptionAsString()}');
-        debugPrintStack(stackTrace: details.stack);
-      }
+    FlutterError.onError = (details) {
+      FirebaseCrashlytics.instance.recordFlutterFatalError(details);
     };
 
     PlatformDispatcher.instance.onError = (error, stack) {
-      if (kDebugMode) {
-        debugPrint('Uncaught (PlatformDispatcher): $error');
-        debugPrintStack(stackTrace: stack);
-      }
+      FirebaseCrashlytics.instance.recordError(
+        error,
+        stack,
+        fatal: true,
+      );
       return true;
     };
 
     runApp(const ProviderScope(child: Pulse3App()));
   }, (error, stack) {
-    if (kDebugMode) {
-      debugPrint('Uncaught (Zone): $error');
-      debugPrintStack(stackTrace: stack);
-    }
+    FirebaseCrashlytics.instance.recordError(
+      error,
+      stack,
+      fatal: true,
+    );
   });
 }
